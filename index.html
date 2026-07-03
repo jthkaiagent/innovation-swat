@@ -3,7 +3,10 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Innovation SWAT — Book Cover</title>
+  <title>Innovation SWAT — Book Cover v2</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;0,900;1,400&family=Inter:wght@200;300;400;500;600&family=Noto+Sans+JP:wght@200;300;400;500&display=swap" rel="stylesheet">
   <style>
     *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
 
@@ -13,14 +16,14 @@
       justify-content: center;
       align-items: center;
       background: #1a1a1e;
-      font-family: 'Georgia', 'Times New Roman', 'Noto Serif', serif;
+      font-family: 'Inter', -apple-system, sans-serif;
       padding: 2rem;
     }
 
     /* ── Book container with 3D spine effect ── */
     .book {
       display: flex;
-      filter: drop-shadow(0 30px 60px rgba(0,0,0,0.6)) drop-shadow(0 10px 20px rgba(0,0,0,0.4));
+      filter: drop-shadow(0 30px 60px rgba(0,0,0,0.5)) drop-shadow(0 10px 20px rgba(0,0,0,0.3));
       max-width: 720px;
       width: 100%;
       transition: transform 0.3s ease;
@@ -33,24 +36,23 @@
     .spine {
       width: 36px;
       min-height: 560px;
-      background: linear-gradient(135deg, #1a1a2e 0%, #0f3460 50%, #1a1a2e 100%);
+      background: linear-gradient(180deg, #d4654a 0%, #b84a30 50%, #9a3a22 100%);
       border-radius: 6px 0 0 6px;
       position: relative;
       display: flex;
       flex-direction: column;
       align-items: center;
       justify-content: center;
+      overflow: hidden;
     }
     .spine::after {
       content: '';
       position: absolute;
-      top: 0; left: 0; right: 0; bottom: 0;
+      inset: 0;
       background: repeating-linear-gradient(
         0deg,
-        transparent,
-        transparent 3px,
-        rgba(255,255,255,0.015) 3px,
-        rgba(255,255,255,0.015) 4px
+        transparent, transparent 3px,
+        rgba(0,0,0,0.04) 3px, rgba(0,0,0,0.04) 4px
       );
       border-radius: 6px 0 0 6px;
       pointer-events: none;
@@ -58,20 +60,19 @@
     .spine-text {
       writing-mode: vertical-rl;
       transform: rotate(180deg);
-      color: #c9a84c;
+      color: rgba(255,255,255,0.85);
       font-size: 0.7rem;
       letter-spacing: 0.4em;
       text-transform: uppercase;
-      font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
-      font-weight: 300;
-      opacity: 0.7;
+      font-family: 'Inter', sans-serif;
+      font-weight: 400;
     }
 
     /* ── Front Cover ── */
     .cover {
       flex: 1;
       min-height: 560px;
-      background: linear-gradient(145deg, #0f0f1a 0%, #1a1a2e 30%, #16213e 60%, #0f3460 100%);
+      background: linear-gradient(160deg, #ff7b50 0%, #e8695e 25%, #d4654a 55%, #c0553e 80%, #b84a30 100%);
       border-radius: 0 6px 6px 0;
       padding: 3rem;
       position: relative;
@@ -81,48 +82,68 @@
       justify-content: space-between;
     }
 
-    /* ── Background texture ── */
+    /* ── Warm gradient atmosphere (Pinterest-inspired: soft blend, atmospheric) ── */
     .cover::before {
       content: '';
       position: absolute;
       inset: 0;
       background:
-        radial-gradient(ellipse 120% 60% at 20% 30%, rgba(201, 168, 76, 0.06) 0%, transparent 70%),
-        radial-gradient(ellipse 80% 50% at 80% 70%, rgba(15, 52, 96, 0.3) 0%, transparent 60%);
+        radial-gradient(ellipse 100% 70% at 20% 20%, rgba(255,220,190,0.25) 0%, transparent 65%),
+        radial-gradient(ellipse 60% 40% at 80% 80%, rgba(200,80,50,0.20) 0%, transparent 60%),
+        radial-gradient(ellipse 80% 50% at 50% 50%, rgba(255,180,150,0.12) 0%, transparent 55%);
       pointer-events: none;
     }
 
-    /* ── Tactical grid overlay ── */
-    .grid-overlay {
+    /* ── Organic paper-grain texture (Abstract Mood aesthetic) ── */
+    .grain-overlay {
       position: absolute;
       inset: 0;
-      background-image:
-        linear-gradient(rgba(201, 168, 76, 0.03) 1px, transparent 1px),
-        linear-gradient(90deg, rgba(201, 168, 76, 0.03) 1px, transparent 1px);
-      background-size: 40px 40px;
+      opacity: 0.04;
+      background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='g'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.65' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23g)'/%3E%3C/svg%3E");
+      background-size: 200px 200px;
       pointer-events: none;
     }
 
-    /* ── Circuit / tactical decorative lines ── */
-    .deco-lines {
+    /* ── Calligraphic brush-stroke lines (Pinterest: sumi-e inspiration) ── */
+    .brush-strokes {
       position: absolute;
       inset: 0;
       pointer-events: none;
       overflow: hidden;
     }
-    .deco-lines svg {
+    .brush-strokes svg {
       width: 100%;
       height: 100%;
     }
 
-    /* ── Accent bar ── */
+    /* ── Floating ink-wash blossoms/dots ── */
+    .ink-dots {
+      position: absolute;
+      inset: 0;
+      pointer-events: none;
+      overflow: hidden;
+    }
+    .ink-dot {
+      position: absolute;
+      border-radius: 50%;
+      background: rgba(255,255,255,0.06);
+      filter: blur(2px);
+    }
+    .ink-dot:nth-child(1) { width: 140px; height: 140px; top: 10%; right: 8%; }
+    .ink-dot:nth-child(2) { width: 80px; height: 80px; bottom: 25%; left: 5%; }
+    .ink-dot:nth-child(3) { width: 200px; height: 200px; bottom: -5%; right: -5%;
+      background: radial-gradient(circle, rgba(255,255,255,0.05) 0%, transparent 70%); }
+    .ink-dot:nth-child(4) { width: 50px; height: 50px; top: 45%; left: 15%;
+      background: rgba(255,255,255,0.04); filter: blur(4px); }
+
+    /* ── Accent bars ── */
     .accent-bar {
       position: absolute;
       top: 0;
       left: 0;
       right: 0;
       height: 4px;
-      background: linear-gradient(90deg, #c9a84c 0%, transparent 80%);
+      background: linear-gradient(90deg, rgba(255,255,255,0.5) 0%, transparent 80%);
     }
     .accent-bar-bottom {
       position: absolute;
@@ -130,7 +151,38 @@
       left: 0;
       right: 0;
       height: 4px;
-      background: linear-gradient(270deg, #c9a84c 20%, transparent 80%);
+      background: linear-gradient(270deg, rgba(255,255,255,0.4) 20%, transparent 80%);
+    }
+
+    /* ── Floating particles (glowing embers) ── */
+    .particles {
+      position: absolute;
+      inset: 0;
+      pointer-events: none;
+      overflow: hidden;
+    }
+    .particle {
+      position: absolute;
+      width: 3px;
+      height: 3px;
+      background: rgba(255,220,190,0.6);
+      border-radius: 50%;
+      filter: blur(1px);
+      animation: ember 6s infinite;
+    }
+    .particle:nth-child(1) { left: 20%; top: 25%; animation-delay: 0s; }
+    .particle:nth-child(2) { left: 50%; top: 15%; animation-delay: 1s; width: 4px; height: 4px; }
+    .particle:nth-child(3) { left: 75%; top: 40%; animation-delay: 2.5s; }
+    .particle:nth-child(4) { left: 35%; top: 65%; animation-delay: 1.5s; }
+    .particle:nth-child(5) { left: 65%; top: 55%; animation-delay: 3.5s; width: 2px; height: 2px; }
+    .particle:nth-child(6) { left: 85%; top: 75%; animation-delay: 4s; }
+    .particle:nth-child(7) { left: 10%; top: 80%; animation-delay: 0.8s; }
+    .particle:nth-child(8) { left: 45%; top: 85%; animation-delay: 2s; }
+    @keyframes ember {
+      0%   { opacity: 0; transform: translateY(0) scale(0.5); }
+      25%  { opacity: 0.8; transform: translateY(-30px) scale(1.2); }
+      75%  { opacity: 0.4; transform: translateY(-70px) scale(0.8); }
+      100% { opacity: 0; transform: translateY(-100px) scale(0); }
     }
 
     /* ── Content ── */
@@ -143,52 +195,19 @@
       justify-content: center;
     }
 
-    /* ── Top badge ── */
-    .badge-row {
-      display: flex;
-      align-items: center;
-      gap: 0.8rem;
-      margin-bottom: 2rem;
-    }
-    .badge {
-      display: inline-flex;
-      align-items: center;
-      gap: 0.5rem;
-      border: 1px solid rgba(201, 168, 76, 0.3);
-      padding: 0.3rem 0.8rem;
-      border-radius: 3px;
-      font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
-      font-size: 0.55rem;
-      letter-spacing: 0.25em;
-      text-transform: uppercase;
-      color: #c9a84c;
-      font-weight: 500;
-    }
-    .badge-dot {
-      width: 4px;
-      height: 4px;
-      background: #c9a84c;
-      border-radius: 50%;
-      animation: pulse-dot 2s ease-in-out infinite;
-    }
-    @keyframes pulse-dot {
-      0%, 100% { opacity: 0.3; }
-      50% { opacity: 1; }
-    }
-
-    /* ── Emblem / icon ── */
+    /* ── Emblem (calligraphic circle — sumi-e inspired) ── */
     .emblem-area {
-      margin-bottom: 2.2rem;
+      margin-bottom: 1.8rem;
     }
     .emblem {
-      width: 48px;
-      height: 48px;
+      width: 56px;
+      height: 56px;
       position: relative;
     }
     .emblem-ring {
-      width: 48px;
-      height: 48px;
-      border: 2px solid rgba(201, 168, 76, 0.4);
+      width: 56px;
+      height: 56px;
+      border: 2px solid rgba(255,255,255,0.25);
       border-radius: 50%;
       display: flex;
       align-items: center;
@@ -196,80 +215,93 @@
       position: relative;
     }
     .emblem-ring::before {
-      content: '';
-      width: 8px;
-      height: 8px;
-      background: #c9a84c;
-      border-radius: 50%;
+      content: '✧';
+      color: rgba(255,255,255,0.6);
+      font-size: 1.4rem;
     }
     .emblem-ring::after {
       content: '';
       position: absolute;
-      inset: -4px;
-      border: 1px solid rgba(201, 168, 76, 0.15);
+      inset: -5px;
+      border: 1px solid rgba(255,255,255,0.08);
       border-radius: 50%;
     }
-    .emblem-crosshair {
-      position: absolute;
-      top: 50%;
-      left: 50%;
-      transform: translate(-50%, -50%);
+
+    /* ── Badge ── */
+    .badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.5rem;
+      border: 1px solid rgba(255,255,255,0.2);
+      padding: 0.3rem 0.9rem;
+      border-radius: 3px;
+      font-family: 'Inter', sans-serif;
+      font-size: 0.55rem;
+      letter-spacing: 0.3em;
+      text-transform: uppercase;
+      color: rgba(255,255,255,0.7);
+      font-weight: 400;
+      margin-bottom: 2rem;
     }
-    .emblem-crosshair::before,
-    .emblem-crosshair::after {
-      content: '';
-      position: absolute;
-      background: rgba(201, 168, 76, 0.15);
-    }
-    .emblem-crosshair::before {
-      width: 60px;
-      height: 1px;
-      top: -0.5px;
-      left: -30px;
-    }
-    .emblem-crosshair::after {
-      width: 1px;
-      height: 60px;
-      left: -0.5px;
-      top: -30px;
+    .badge-dot {
+      width: 4px;
+      height: 4px;
+      background: rgba(255,255,255,0.6);
+      border-radius: 50%;
     }
 
     /* ── Title ── */
     .title-block {
-      margin-bottom: 0.8rem;
+      margin-bottom: 0.6rem;
     }
     .title-pre {
-      font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
-      font-size: 0.6rem;
-      letter-spacing: 0.3em;
+      font-family: 'Inter', sans-serif;
+      font-size: 0.55rem;
+      letter-spacing: 0.35em;
       text-transform: uppercase;
-      color: rgba(201, 168, 76, 0.5);
-      margin-bottom: 0.6rem;
+      color: rgba(255,255,255,0.45);
+      margin-bottom: 0.5rem;
       font-weight: 400;
     }
     .title-main {
-      font-size: clamp(2.8rem, 5.5vw, 4rem);
-      font-weight: 700;
+      font-family: 'Playfair Display', 'Georgia', serif;
+      font-size: clamp(3rem, 6vw, 4.2rem);
+      font-weight: 900;
       color: #ffffff;
-      letter-spacing: 0.04em;
-      line-height: 1.1;
-      font-family: 'Georgia', 'Times New Roman', serif;
+      letter-spacing: 0.02em;
+      line-height: 1.05;
     }
-    .title-main em {
-      font-style: normal;
-      color: #c9a84c;
+    .title-main .swat {
+      display: inline-block;
+      font-family: 'Playfair Display', serif;
+      font-weight: 900;
+      font-style: italic;
+      color: #ffffff;
+      text-shadow: 0 2px 20px rgba(255,150,100,0.3);
+      letter-spacing: 0.15em;
+      position: relative;
+    }
+    .title-main .swat::after {
+      content: '';
+      position: absolute;
+      bottom: 2px;
+      left: 0;
+      right: 0;
+      height: 4px;
+      background: rgba(255,255,255,0.2);
+      border-radius: 2px;
     }
 
-    /* ── Subtitle ── */
+    /* ── Subtitle with brush-stroke left border (calligraphic influence) ── */
     .subtitle {
-      font-size: clamp(0.85rem, 1.3vw, 1rem);
-      color: rgba(255, 255, 255, 0.7);
+      font-family: 'Inter', sans-serif;
+      font-size: clamp(0.8rem, 1.2vw, 0.95rem);
+      color: rgba(255,255,255,0.75);
       line-height: 1.6;
-      max-width: 420px;
+      max-width: 400px;
       font-weight: 300;
-      letter-spacing: 0.02em;
-      font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
-      border-left: 2px solid rgba(201, 168, 76, 0.4);
+      letter-spacing: 0.03em;
+      border-left: 3px solid rgba(255,255,255,0.3);
       padding-left: 1.2rem;
       margin-top: 1.2rem;
     }
@@ -284,72 +316,40 @@
       padding-top: 2rem;
     }
     .author {
-      font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
-      font-size: 0.75rem;
-      letter-spacing: 0.25em;
-      text-transform: uppercase;
-      color: rgba(255, 255, 255, 0.5);
-      font-weight: 400;
+      font-family: 'Inter', sans-serif;
+      font-size: 0.7rem;
+      letter-spacing: 0.2em;
+      color: rgba(255,255,255,0.5);
+      font-weight: 300;
     }
     .author strong {
-      color: rgba(255, 255, 255, 0.8);
+      color: rgba(255,255,255,0.75);
       font-weight: 500;
+      font-family: 'Noto Sans JP', 'Inter', sans-serif;
     }
     .series-mark {
-      font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
-      font-size: 0.5rem;
+      font-family: 'Inter', sans-serif;
+      font-size: 0.45rem;
       letter-spacing: 0.15em;
-      color: rgba(201, 168, 76, 0.3);
+      color: rgba(255,255,255,0.25);
       text-align: right;
     }
     .series-mark span {
       display: block;
     }
 
-    /* ── Floating particles ── */
-    .particles {
-      position: absolute;
-      inset: 0;
-      pointer-events: none;
-      overflow: hidden;
-    }
-    .particle {
-      position: absolute;
-      width: 2px;
-      height: 2px;
-      background: #c9a84c;
-      border-radius: 50%;
-      opacity: 0;
-      animation: float 8s infinite;
-    }
-    .particle:nth-child(1) { left: 15%; top: 30%; animation-delay: 0s; }
-    .particle:nth-child(2) { left: 55%; top: 20%; animation-delay: 1.5s; width: 3px; height: 3px; }
-    .particle:nth-child(3) { left: 80%; top: 45%; animation-delay: 3s; }
-    .particle:nth-child(4) { left: 30%; top: 70%; animation-delay: 2s; width: 1px; height: 1px; }
-    .particle:nth-child(5) { left: 70%; top: 65%; animation-delay: 4s; }
-    .particle:nth-child(6) { left: 45%; top: 85%; animation-delay: 5s; width: 3px; height: 3px; }
-    .particle:nth-child(7) { left: 90%; top: 15%; animation-delay: 0.5s; }
-    .particle:nth-child(8) { left: 10%; top: 55%; animation-delay: 3.5s; }
-
-    @keyframes float {
-      0%   { opacity: 0; transform: translateY(0) scale(0); }
-      20%  { opacity: 0.6; transform: translateY(-20px) scale(1); }
-      80%  { opacity: 0.6; transform: translateY(-60px) scale(0.8); }
-      100% { opacity: 0; transform: translateY(-80px) scale(0); }
-    }
-
     /* ── Responsive ── */
     @media (max-width: 600px) {
       body { padding: 1rem; }
       .spine { width: 24px; min-height: 400px; }
-      .cover { min-height: 400px; padding: 1.5rem; }
+      .cover { min-height: 420px; padding: 1.5rem; }
       .cover-content { justify-content: flex-start; padding-top: 0.5rem; }
-      .badge-row { margin-bottom: 1rem; }
-      .emblem-area { margin-bottom: 1.2rem; }
-      .emblem { width: 36px; height: 36px; }
-      .emblem-ring { width: 36px; height: 36px; }
-      .title-main { font-size: clamp(1.8rem, 8vw, 2.8rem); }
-      .subtitle { font-size: 0.75rem; padding-left: 0.8rem; margin-top: 0.8rem; }
+      .badge { margin-bottom: 1.2rem; }
+      .emblem-area { margin-bottom: 1rem; }
+      .emblem { width: 40px; height: 40px; }
+      .emblem-ring { width: 40px; height: 40px; }
+      .title-main { font-size: clamp(2rem, 8vw, 3rem); }
+      .subtitle { font-size: 0.7rem; padding-left: 0.8rem; margin-top: 0.8rem; max-width: 280px; }
       .accent-bar, .accent-bar-bottom { height: 3px; }
     }
 
@@ -360,20 +360,20 @@
       .particle { display: none; }
     }
 
-    /* ── In-page capture info ── */
     .note {
       position: fixed;
       bottom: 1rem;
       left: 50%;
       transform: translateX(-50%);
-      font-family: -apple-system, sans-serif;
-      font-size: 0.7rem;
+      font-family: 'Inter', sans-serif;
+      font-size: 0.65rem;
       color: rgba(255,255,255,0.3);
       background: rgba(0,0,0,0.5);
       padding: 0.4rem 1rem;
       border-radius: 20px;
       backdrop-filter: blur(8px);
       z-index: 100;
+      white-space: nowrap;
     }
   </style>
 </head>
@@ -389,52 +389,66 @@
   <div class="cover">
     <div class="accent-bar"></div>
     <div class="accent-bar-bottom"></div>
-    <div class="grid-overlay"></div>
+    <div class="grain-overlay"></div>
 
-    <!-- Decorative circuit lines -->
-    <div class="deco-lines">
-      <svg viewBox="0 0 600 560" fill="none" xmlns="http://www.w3.org/2000/svg">
-        <path d="M500 480 L500 400 L440 400" stroke="#c9a84c" stroke-width="0.5" opacity="0.15"/>
-        <circle cx="436" cy="400" r="3" fill="#c9a84c" opacity="0.15"/>
-        <path d="M550 200 L550 120 L480 120" stroke="#c9a84c" stroke-width="0.5" opacity="0.12"/>
-        <circle cx="476" cy="120" r="3" fill="#c9a84c" opacity="0.12"/>
-        <path d="M30 100 L30 180 L100 180" stroke="#c9a84c" stroke-width="0.5" opacity="0.1"/>
-        <circle cx="104" cy="180" r="3" fill="#c9a84c" opacity="0.1"/>
-        <path d="M20 400 L20 320 L90 320" stroke="#c9a84c" stroke-width="0.5" opacity="0.08"/>
+    <!-- Calligraphic brush-stroke lines (sumi-e Pinterest influence) -->
+    <div class="brush-strokes">
+      <svg viewBox="0 0 560 560" fill="none" xmlns="http://www.w3.org/2000/svg">
+        <!-- Brush stroke 1 — sweeping top right -->
+        <path d="M480 80 Q440 60 380 90 Q300 130 260 110 Q220 90 180 120 Q140 150 100 130" 
+              stroke="rgba(255,255,255,0.08)" stroke-width="4" stroke-linecap="round" fill="none"
+              stroke-dasharray="0 0" filter="url(#brush1)"/>
+        <!-- Brush stroke 2 — bold accent mark -->
+        <path d="M520 140 Q500 135 470 148 Q440 160 410 152 Q380 144 360 155" 
+              stroke="rgba(255,255,255,0.06)" stroke-width="6" stroke-linecap="round" fill="none"/>
+        <!-- Brush stroke 3 — subtle horizontal -->
+        <path d="M40 340 Q80 330 140 345 Q200 360 260 340 Q320 320 380 338" 
+              stroke="rgba(255,255,255,0.04)" stroke-width="3" stroke-linecap="round" fill="none"/>
+        <!-- Brush stroke 4 — vertical accent -->
+        <path d="M80 200 Q82 240 78 280 Q74 320 80 360 Q86 400 82 440" 
+              stroke="rgba(255,255,255,0.03)" stroke-width="5" stroke-linecap="round" fill="none"/>
+        <!-- Ink splatter dots -->
+        <circle cx="490" cy="100" r="2" fill="rgba(255,255,255,0.06)"/>
+        <circle cx="510" cy="110" r="1.5" fill="rgba(255,255,255,0.04)"/>
+        <circle cx="475" cy="90" r="1" fill="rgba(255,255,255,0.05)"/>
       </svg>
     </div>
 
-    <!-- Floating particles -->
+    <!-- Ink-wash soft dots (abstract floral/mist influence) -->
+    <div class="ink-dots">
+      <div class="ink-dot"></div>
+      <div class="ink-dot"></div>
+      <div class="ink-dot"></div>
+      <div class="ink-dot"></div>
+    </div>
+
+    <!-- Floating ember particles -->
     <div class="particles">
-      <div class="particle"></div>
-      <div class="particle"></div>
-      <div class="particle"></div>
-      <div class="particle"></div>
-      <div class="particle"></div>
-      <div class="particle"></div>
-      <div class="particle"></div>
-      <div class="particle"></div>
+      <div class="particle"></div><div class="particle"></div>
+      <div class="particle"></div><div class="particle"></div>
+      <div class="particle"></div><div class="particle"></div>
+      <div class="particle"></div><div class="particle"></div>
     </div>
 
     <!-- Content -->
     <div class="cover-content">
-      <div class="badge-row">
-        <div class="badge">
-          <span class="badge-dot"></span>
-          A New Breed of Leadership
-        </div>
+      <div class="badge">
+        <span class="badge-dot"></span>
+        A New Breed of Leadership
       </div>
 
       <div class="emblem-area">
         <div class="emblem">
           <div class="emblem-ring"></div>
-          <div class="emblem-crosshair"></div>
         </div>
       </div>
 
       <div class="title-block">
         <div class="title-pre">A Manifesto for the Age of Intelligence</div>
-        <h1 class="title-main">Innovation<br><em>SWAT</em></h1>
+        <h1 class="title-main">
+          Innovation<br>
+          <span class="swat">SWAT</span>
+        </h1>
       </div>
 
       <div class="subtitle">
@@ -455,7 +469,7 @@
   </div>
 </div>
 
-<div class="note">📸 Screenshot or print this page &mdash; the cover is designed for capture</div>
+<div class="note">📸 Screenshot or print this page</div>
 
 </body>
 </html>
