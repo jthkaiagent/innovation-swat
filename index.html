@@ -1,279 +1,251 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Innovation SWAT — Book Cover</title>
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@200;300;400;500&family=Noto+Sans+JP:wght@200;300;400;500&display=swap" rel="stylesheet">
-  <style>
-    *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Innovation SWAT — Premium Book Cover</title>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;0,900;1,400&family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;0,700;1,400&family=Inter:wght@300;400;600&display=swap" rel="stylesheet">
+<style>
+  * { margin: 0; padding: 0; box-sizing: border-box; }
 
-    body {
-      min-height: 100vh;
-      display: flex;
-      flex-direction: column;
-      justify-content: center;
-      align-items: center;
-      background: #1a1a1e;
-      padding: 2rem;
-      font-family: 'Inter', -apple-system, sans-serif;
-    }
+  body {
+    min-height: 100vh;
+    background: #1a1a1a;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    padding: 40px 20px;
+    font-family: 'Cormorant Garamond', serif;
+  }
 
-    .switcher {
-      display: flex;
-      gap: 0.6rem;
-      margin-bottom: 1.5rem;
-      flex-wrap: wrap;
-      justify-content: center;
-    }
-    .switcher button {
-      font-family: 'Inter', sans-serif;
-      font-size: 0.6rem;
-      letter-spacing: 0.1em;
-      padding: 0.35rem 0.8rem;
-      border: 1px solid rgba(255,255,255,0.12);
-      background: rgba(255,255,255,0.04);
-      color: rgba(255,255,255,0.4);
-      border-radius: 4px;
-      cursor: pointer;
-      transition: all 0.2s;
-    }
-    .switcher button:hover { background: rgba(255,255,255,0.1); color: rgba(255,255,255,0.7); }
-    .switcher button.active { background: rgba(255,255,255,0.14); color: #fff; border-color: rgba(255,255,255,0.25); }
+  /* Book mockup frame */
+  .book-frame {
+    position: relative;
+    width: 100%;
+    max-width: 720px;  /* 6×9 at ~120px/inch */
+    aspect-ratio: 2 / 3;
+    background: #fff;
+    border-radius: 4px;
+    box-shadow:
+      0 20px 60px rgba(0,0,0,0.5),
+      0 0 0 1px rgba(255,255,255,0.05),
+      inset 0 0 30px rgba(0,0,0,0.1);
+    overflow: hidden;
+    margin-bottom: 30px;
+  }
 
-    .book {
-      display: flex;
-      filter: drop-shadow(0 30px 60px rgba(0,0,0,0.5)) drop-shadow(0 10px 20px rgba(0,0,0,0.3));
-      max-width: 540px;
-      width: 100%;
-      transition: transform 0.3s ease;
-    }
-    .book:hover { transform: translateY(-6px); }
+  /* Background layer - AI generated */
+  .cover-bg {
+    position: absolute;
+    inset: 0;
+    background: url('gen_777_1.jpg') center/cover no-repeat;
+    transition: opacity 0.8s ease;
+  }
 
-    .spine {
-      width: 30px;
-      min-height: 810px;
-      background: linear-gradient(180deg, #b84a30 0%, #8a3020 100%);
-      border-radius: 5px 0 0 5px;
-      position: relative;
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      justify-content: center;
-      overflow: hidden;
-    }
-    .spine::after {
-      content: '';
-      position: absolute;
-      inset: 0;
-      background: repeating-linear-gradient(0deg, transparent, transparent 3px, rgba(0,0,0,0.04) 3px, rgba(0,0,0,0.04) 4px);
-      border-radius: 5px 0 0 5px;
-      pointer-events: none;
-    }
-    .spine-text {
-      writing-mode: vertical-rl;
-      transform: rotate(180deg);
-      color: rgba(255,255,255,0.7);
-      font-size: 0.55rem;
-      letter-spacing: 0.4em;
-      text-transform: uppercase;
-      font-family: 'Inter', sans-serif;
-      font-weight: 300;
-    }
+  .cover-bg.v2 { opacity: 0; }
 
-    .cover {
-      flex: 1;
-      min-height: 810px;
-      border-radius: 0 5px 5px 0;
-      position: relative;
-      overflow: hidden;
-      display: flex;
-      flex-direction: column;
-      justify-content: space-between;
-      background-size: cover;
-      background-position: center;
-    }
+  /* Dark gradient overlay for text readability */
+  .cover-overlay {
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(
+      180deg,
+      rgba(0,0,0,0.15) 0%,
+      rgba(0,0,0,0.05) 30%,
+      rgba(0,0,0,0.2) 60%,
+      rgba(0,0,0,0.5) 100%
+    );
+    pointer-events: none;
+  }
 
-    .cover-overlay {
-      position: absolute;
-      inset: 0;
-      background: linear-gradient(180deg,
-        rgba(0,0,0,0.12) 0%,
-        rgba(0,0,0,0.02) 30%,
-        rgba(0,0,0,0.02) 60%,
-        rgba(0,0,0,0.15) 100%
-      );
-      pointer-events: none;
-      z-index: 1;
-    }
+  /* Title art layer - AI hand-lettered */
+  .title-art {
+    position: absolute;
+    top: 12%;
+    left: 8%;
+    width: 84%;
+    z-index: 2;
+    opacity: 0.9;
+    transition: opacity 0.6s ease;
+    mix-blend-mode: multiply;
+  }
 
-    .accent-bar {
-      position: absolute;
-      top: 0; left: 0; right: 0;
-      height: 4px;
-      background: linear-gradient(90deg, rgba(255,200,150,0.5) 0%, transparent 80%);
-      z-index: 5;
-    }
-    .accent-bar-bottom {
-      position: absolute;
-      bottom: 0; left: 0; right: 0;
-      height: 4px;
-      background: linear-gradient(270deg, rgba(255,200,150,0.4) 20%, transparent 80%);
-      z-index: 5;
-    }
+  .title-art img { width: 100%; height: auto; display: block; }
 
-    .title-area {
-      position: relative;
-      z-index: 3;
-      padding: 3rem 2.5rem 0;
-      flex: 1;
-      display: flex;
-      flex-direction: column;
-      justify-content: center;
-    }
-    .title-img {
-      width: 100%;
-      max-width: 480px;
-      height: auto;
-      display: block;
-      margin: 0;
-      filter: drop-shadow(0 4px 20px rgba(0,0,0,0.15));
-    }
+  /* CSS text overlays */
+  .cover-text {
+    position: absolute;
+    z-index: 3;
+    width: 100%;
+    padding: 0 10%;
+    text-align: center;
+    pointer-events: none;
+  }
 
-    .info-area {
-      position: relative;
-      z-index: 3;
-      padding: 1.5rem 2.5rem 2rem;
-    }
+  .subtitle {
+    top: 48%;
+    font-family: 'Cormorant Garamond', serif;
+    font-size: clamp(14px, 2.5vw, 22px);
+    font-weight: 400;
+    font-style: italic;
+    color: rgba(255,255,255,0.92);
+    text-shadow: 0 2px 8px rgba(0,0,0,0.3);
+    letter-spacing: 0.04em;
+    line-height: 1.5;
+  }
 
-    .subtitle {
-      font-family: 'Inter', sans-serif;
-      font-size: clamp(0.7rem, 1.1vw, 0.85rem);
-      color: rgba(255,255,255,0.75);
-      line-height: 1.55;
-      max-width: 340px;
-      font-weight: 300;
-      letter-spacing: 0.04em;
-      border-left: 3px solid rgba(255,200,150,0.3);
-      padding-left: 1rem;
-    }
+  .author {
+    bottom: 16%;
+    font-family: 'Cormorant Garamond', serif;
+    font-size: clamp(13px, 2vw, 18px);
+    font-weight: 300;
+    color: rgba(255,255,255,0.85);
+    text-shadow: 0 2px 6px rgba(0,0,0,0.3);
+    letter-spacing: 0.15em;
+    text-transform: uppercase;
+  }
 
-    .cover-bottom {
-      display: flex;
-      justify-content: space-between;
-      align-items: flex-end;
-      margin-top: 1.2rem;
-      padding-top: 1rem;
-      border-top: 1px solid rgba(255,255,255,0.08);
-    }
-    .author {
-      font-family: 'Inter', sans-serif;
-      font-size: 0.6rem;
-      letter-spacing: 0.2em;
-      color: rgba(255,255,255,0.45);
-      font-weight: 300;
-    }
-    .author strong {
-      color: rgba(255,255,255,0.7);
-      font-weight: 500;
-      font-family: 'Noto Sans JP', 'Inter', sans-serif;
-    }
-    .series-mark {
-      font-size: 0.4rem;
-      letter-spacing: 0.15em;
-      color: rgba(255,255,255,0.2);
-      text-align: right;
-    }
+  .tagline {
+    bottom: 8%;
+    font-family: 'Inter', sans-serif;
+    font-size: clamp(9px, 1.2vw, 12px);
+    font-weight: 400;
+    color: rgba(255,215,150,0.8);
+    text-shadow: 0 1px 4px rgba(0,0,0,0.4);
+    letter-spacing: 0.35em;
+    text-transform: uppercase;
+  }
 
-    @media (max-width: 600px) {
-      body { padding: 1rem; }
-      .spine { width: 20px; min-height: 480px; }
-      .cover { min-height: 480px; }
-      .title-area { padding: 1.5rem 1.2rem 0; }
-      .info-area { padding: 0.8rem 1.2rem 1.2rem; }
-      .subtitle { font-size: 0.6rem; padding-left: 0.7rem; max-width: 200px; }
-      .cover-bottom { flex-direction: column; align-items: flex-start; gap: 0.5rem; }
-    }
+  /* Subtle mock spine shadow on left */
+  .spine-shadow {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 6%;
+    height: 100%;
+    background: linear-gradient(90deg, rgba(0,0,0,0.12) 0%, transparent 100%);
+    z-index: 4;
+    pointer-events: none;
+  }
 
-    @media print {
-      body { background: white; padding: 0; }
-      .book { filter: none; max-width: 100%; }
-      .switcher { display: none; }
-    }
+  /* Controls */
+  .controls {
+    display: flex;
+    gap: 12px;
+    flex-wrap: wrap;
+    justify-content: center;
+    margin-bottom: 24px;
+  }
 
-    .note {
-      font-size: 0.6rem;
-      color: rgba(255,255,255,0.25);
-      margin-top: 1.5rem;
-      text-align: center;
-      max-width: 400px;
-    }
-  </style>
+  .controls button {
+    padding: 10px 24px;
+    border: 1px solid rgba(255,255,255,0.15);
+    background: rgba(255,255,255,0.06);
+    color: #ccc;
+    border-radius: 8px;
+    cursor: pointer;
+    font-family: 'Inter', sans-serif;
+    font-size: 13px;
+    transition: all 0.25s ease;
+    backdrop-filter: blur(4px);
+  }
+
+  .controls button:hover {
+    background: rgba(255,255,255,0.12);
+    color: #fff;
+    border-color: rgba(255,255,255,0.3);
+  }
+
+  .controls button.active {
+    background: linear-gradient(135deg, #c0392b, #e74c3c);
+    color: #fff;
+    border-color: #c0392b;
+  }
+
+  .info {
+    text-align: center;
+    color: #666;
+    font-family: 'Inter', sans-serif;
+    font-size: 12px;
+    line-height: 1.8;
+  }
+
+  .info a { color: #e74c3c; text-decoration: none; }
+  .info a:hover { text-decoration: underline; }
+
+  /* Responsive */
+  @media (max-width: 600px) {
+    .book-frame { max-width: 360px; }
+    .subtitle { font-size: clamp(11px, 3.5vw, 16px); }
+    .author { font-size: clamp(10px, 2.8vw, 14px); }
+    .tagline { font-size: clamp(7px, 1.8vw, 10px); }
+  }
+</style>
 </head>
 <body>
 
-<div class="switcher" id="switcher">
-  <button class="active" data-variant="1">🎨 Brush Calligraphy</button>
-  <button data-variant="2">🖌 Sumi-e Ink</button>
-  <button data-variant="3">✒️ Modern Expressive</button>
-</div>
-
-<div class="book">
-  <div class="spine">
-    <span class="spine-text">Innovation SWAT</span>
+  <!-- Background selector -->
+  <div class="controls">
+    <button class="active" onclick="switchBg(1)">🌅 Background A</button>
+    <button onclick="switchBg(2)">🌄 Background B</button>
+    <button onclick="switchTitle(1)">🖌️ Title Style 1</button>
+    <button onclick="switchTitle(2)">✒️ Title Style 2</button>
   </div>
 
-  <div class="cover" id="cover">
+  <!-- Book cover mockup -->
+  <div class="book-frame" id="bookCover">
+    <!-- Background image -->
+    <div class="cover-bg" id="bg1" style="background-image:url('gen_777_1.jpg')"></div>
+    <div class="cover-bg v2" id="bg2" style="background-image:url('gen_777_2.jpg')"></div>
+
+    <!-- Overlay for text readability -->
     <div class="cover-overlay"></div>
-    <div class="accent-bar"></div>
-    <div class="accent-bar-bottom"></div>
 
-    <div class="title-area">
-      <img class="title-img" id="titleImg" src="title_v1.jpg" alt="Innovation SWAT — hand-lettered title">
+    <!-- AI Hand-lettered title art -->
+    <div class="title-art" id="titleArt1">
+      <img src="gen_888_1.jpg" alt="INNOVATION SWAT hand-lettered">
+    </div>
+    <div class="title-art" id="titleArt2" style="opacity:0;">
+      <img src="gen_888_2.jpg" alt="INNOVATION SWAT hand-lettered variant">
     </div>
 
-    <div class="info-area">
-      <div class="subtitle">
-        The Superpower to Build Any Business<br>
-        and Product in the Age of AI
-      </div>
-      <div class="cover-bottom">
-        <div class="author">
-          Written by <strong>Justin Tsui</strong>
-        </div>
-        <div class="series-mark">
-          ✦ &nbsp;FRAMEWORKS FOR THE NEW WORLD&nbsp; ✦
-        </div>
-      </div>
+    <!-- CSS text overlay -->
+    <div class="cover-text subtitle">
+      The Superpower to Build Any Business<br>
+      and Product in the Age of AI
     </div>
+
+    <div class="cover-text author">Written by Justin Tsui</div>
+    <div class="cover-text tagline">✦ Frameworks for the New World ✦</div>
+
+    <!-- Spine shadow -->
+    <div class="spine-shadow"></div>
   </div>
-</div>
 
-<p class="note">
-  📸 Screenshot this page • Title: <strong>AI hand-lettered</strong> • Subtitle/Author: clean CSS
-</p>
+  <div class="info">
+    📖 <strong>6" × 9"</strong> book cover format &nbsp;•&nbsp;
+    AI background via <a href="https://fal.ai" target="_blank">fal.ai</a> FLUX Pro Kontext
+    &nbsp;•&nbsp; Title composited + CSS typography
+  </div>
 
-<script>
-  const titleImg = document.getElementById('titleImg');
-  const cover = document.getElementById('cover');
-  const buttons = document.querySelectorAll('.switcher button');
-  const variants = [
-    { bg: 'url(bg_v2.jpg)', title: 'title_v1.jpg' },
-    { bg: 'url(bg_v1.jpg)', title: 'title_v2.jpg' },
-    { bg: 'url(bg_v3.jpg)', title: 'title_v3.jpg' }
-  ];
-  buttons.forEach((btn, i) => {
-    btn.addEventListener('click', () => {
-      buttons.forEach(b => b.classList.remove('active'));
-      btn.classList.add('active');
-      cover.style.backgroundImage = variants[i].bg;
-      titleImg.src = variants[i].title;
-    });
-  });
-  cover.style.backgroundImage = variants[0].bg;
-</script>
+  <script>
+    function switchBg(n) {
+      document.getElementById('bg1').style.opacity = n === 1 ? '1' : '0';
+      document.getElementById('bg2').style.opacity = n === 2 ? '1' : '0';
+      document.querySelectorAll('.controls button').forEach((b,i) => {
+        b.classList.toggle('active', (i < 2 && i === n-1) || (i >= 2));
+      });
+    }
+
+    function switchTitle(n) {
+      document.getElementById('titleArt1').style.opacity = n === 1 ? '0.9' : '0';
+      document.getElementById('titleArt2').style.opacity = n === 2 ? '0.9' : '0';
+      document.querySelectorAll('.controls button').forEach((b,i) => {
+        b.classList.toggle('active', (i >= 2 && i-2 === n-1) || (i < 2));
+      });
+    }
+  </script>
 
 </body>
 </html>
