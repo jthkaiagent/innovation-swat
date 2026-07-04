@@ -3,249 +3,579 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Innovation SWAT — Premium Book Cover</title>
-<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;0,900;1,400&family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;0,700;1,400&family=Inter:wght@300;400;600&display=swap" rel="stylesheet">
+<title>Innovation SWAT — Award-Winning Book Cover</title>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;0,900;1,400&family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;0,700;1,300;1,400;1,600&family=Inter:wght@200;300;400;600&family=Cinzel:wght@400;600;700&family=Bodoni+Moda:ital,wght@0,400;0,700;0,900;1,400&display=swap" rel="stylesheet">
 <style>
   * { margin: 0; padding: 0; box-sizing: border-box; }
 
   body {
     min-height: 100vh;
-    background: #1a1a1a;
+    background: #111;
     display: flex;
     flex-direction: column;
     align-items: center;
-    justify-content: center;
-    padding: 40px 20px;
-    font-family: 'Cormorant Garamond', serif;
+    padding: 30px 16px;
+    font-family: 'Inter', sans-serif;
+    color: #e0e0e0;
   }
 
-  /* Book mockup frame */
-  .book-frame {
-    position: relative;
-    width: 100%;
-    max-width: 720px;  /* 6×9 at ~120px/inch */
-    aspect-ratio: 2 / 3;
-    background: #fff;
-    border-radius: 4px;
-    box-shadow:
-      0 20px 60px rgba(0,0,0,0.5),
-      0 0 0 1px rgba(255,255,255,0.05),
-      inset 0 0 30px rgba(0,0,0,0.1);
-    overflow: hidden;
-    margin-bottom: 30px;
-  }
-
-  /* Background layer - AI generated */
-  .cover-bg {
-    position: absolute;
-    inset: 0;
-    background: url('gen_777_1.jpg') center/cover no-repeat;
-    transition: opacity 0.8s ease;
-  }
-
-  .cover-bg.v2 { opacity: 0; }
-
-  /* Dark gradient overlay for text readability */
-  .cover-overlay {
-    position: absolute;
-    inset: 0;
-    background: linear-gradient(
-      180deg,
-      rgba(0,0,0,0.15) 0%,
-      rgba(0,0,0,0.05) 30%,
-      rgba(0,0,0,0.2) 60%,
-      rgba(0,0,0,0.5) 100%
-    );
-    pointer-events: none;
-  }
-
-  /* Title art layer - AI hand-lettered */
-  .title-art {
-    position: absolute;
-    top: 12%;
-    left: 8%;
-    width: 84%;
-    z-index: 2;
-    opacity: 0.9;
-    transition: opacity 0.6s ease;
-    mix-blend-mode: multiply;
-  }
-
-  .title-art img { width: 100%; height: auto; display: block; }
-
-  /* CSS text overlays */
-  .cover-text {
-    position: absolute;
-    z-index: 3;
-    width: 100%;
-    padding: 0 10%;
+  /* ── Header ── */
+  .header {
     text-align: center;
-    pointer-events: none;
+    margin-bottom: 32px;
+    max-width: 700px;
   }
-
-  .subtitle {
-    top: 48%;
-    font-family: 'Cormorant Garamond', serif;
-    font-size: clamp(14px, 2.5vw, 22px);
-    font-weight: 400;
-    font-style: italic;
-    color: rgba(255,255,255,0.92);
-    text-shadow: 0 2px 8px rgba(0,0,0,0.3);
-    letter-spacing: 0.04em;
-    line-height: 1.5;
+  .header h1 {
+    font-family: 'Playfair Display', serif;
+    font-size: clamp(24px, 4vw, 36px);
+    font-weight: 700;
+    background: linear-gradient(135deg, #ff6b35, #f7c948, #e85d3a);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
   }
-
-  .author {
-    bottom: 16%;
-    font-family: 'Cormorant Garamond', serif;
-    font-size: clamp(13px, 2vw, 18px);
+  .header .sub {
+    color: #888;
+    font-size: clamp(11px, 1.4vw, 14px);
+    margin-top: 6px;
     font-weight: 300;
-    color: rgba(255,255,255,0.85);
-    text-shadow: 0 2px 6px rgba(0,0,0,0.3);
     letter-spacing: 0.15em;
     text-transform: uppercase;
   }
-
-  .tagline {
-    bottom: 8%;
-    font-family: 'Inter', sans-serif;
-    font-size: clamp(9px, 1.2vw, 12px);
-    font-weight: 400;
-    color: rgba(255,215,150,0.8);
-    text-shadow: 0 1px 4px rgba(0,0,0,0.4);
-    letter-spacing: 0.35em;
-    text-transform: uppercase;
+  .header .badge {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    margin-top: 12px;
+    padding: 6px 18px;
+    background: linear-gradient(135deg, rgba(255,215,0,0.15), rgba(255,180,0,0.08));
+    border: 1px solid rgba(255,215,0,0.25);
+    border-radius: 20px;
+    font-size: 12px;
+    color: #ffd700;
+    letter-spacing: 0.08em;
   }
 
-  /* Subtle mock spine shadow on left */
-  .spine-shadow {
+  /* ── Direction Pills ── */
+  .dir-pills {
+    display: flex;
+    gap: 8px;
+    flex-wrap: wrap;
+    justify-content: center;
+    margin-bottom: 20px;
+  }
+  .dir-pill {
+    padding: 8px 18px;
+    border-radius: 20px;
+    border: 1px solid rgba(255,255,255,0.1);
+    background: rgba(255,255,255,0.04);
+    color: #999;
+    cursor: pointer;
+    font-size: 12px;
+    font-weight: 500;
+    transition: all 0.3s ease;
+    letter-spacing: 0.04em;
+  }
+  .dir-pill:hover {
+    background: rgba(255,255,255,0.08);
+    color: #ddd;
+  }
+  .dir-pill.active {
+    background: linear-gradient(135deg, #ff6b35, #e85d3a);
+    color: #fff;
+    border-color: transparent;
+    box-shadow: 0 4px 20px rgba(232,93,58,0.3);
+  }
+
+  /* ── Title toggle ── */
+  .title-toggle {
+    display: flex;
+    gap: 8px;
+    justify-content: center;
+    margin-bottom: 20px;
+  }
+  .title-toggle button {
+    padding: 6px 14px;
+    border-radius: 6px;
+    border: 1px solid rgba(255,255,255,0.08);
+    background: rgba(255,255,255,0.03);
+    color: #777;
+    cursor: pointer;
+    font-size: 11px;
+    transition: all 0.25s;
+    font-family: 'Inter', sans-serif;
+  }
+  .title-toggle button:hover { background: rgba(255,255,255,0.06); color: #bbb; }
+  .title-toggle button.active {
+    background: rgba(255,255,255,0.1);
+    color: #fff;
+    border-color: rgba(255,255,255,0.2);
+  }
+
+  /* ── Book Mockup ── */
+  .book-wrapper {
+    position: relative;
+    width: 100%;
+    max-width: 780px;
+    margin-bottom: 24px;
+  }
+
+  /* Outer award border */
+  .book-wrapper::before {
+    content: '★ GOLD AWARD ★ CREATIVE EXCELLENCE ★';
     position: absolute;
-    top: 0;
-    left: 0;
-    width: 6%;
+    top: -14px;
+    left: 50%;
+    transform: translateX(-50%);
+    background: linear-gradient(135deg, #ffd700, #ffaa00);
+    color: #1a1a1a;
+    font-size: 9px;
+    font-weight: 700;
+    letter-spacing: 0.35em;
+    padding: 4px 20px;
+    border-radius: 3px;
+    z-index: 10;
+    white-space: nowrap;
+  }
+
+  .book-frame {
+    position: relative;
+    width: 100%;
+    aspect-ratio: 2 / 3;
+    background: #fff;
+    border-radius: 4px;
+    overflow: hidden;
+    box-shadow:
+      0 0 0 1px rgba(255,255,255,0.06),
+      0 4px 30px rgba(0,0,0,0.6),
+      0 20px 60px rgba(0,0,0,0.4);
+  }
+
+  .book-frame::after {
+    content: '';
+    position: absolute;
+    inset: 0;
+    border-radius: 4px;
+    box-shadow: inset 0 0 40px rgba(0,0,0,0.12);
+    pointer-events: none;
+    z-index: 5;
+  }
+
+  /* Background layers (4 directions) */
+  .bg-layer {
+    position: absolute;
+    inset: 0;
+    background-size: cover;
+    background-position: center;
+    opacity: 0;
+    transition: opacity 0.8s cubic-bezier(0.4, 0, 0.2, 1);
+    z-index: 0;
+  }
+  .bg-layer.active { opacity: 1; }
+
+  /* Overlay gradient */
+  .overlay {
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(180deg,
+      rgba(0,0,0,0.08) 0%,
+      rgba(0,0,0,0.02) 25%,
+      rgba(0,0,0,0.12) 50%,
+      rgba(0,0,0,0.35) 85%,
+      rgba(0,0,0,0.5) 100%
+    );
+    z-index: 1;
+    pointer-events: none;
+  }
+
+  /* Spine shadow */
+  .spine {
+    position: absolute;
+    top: 0; left: 0;
+    width: 5%;
     height: 100%;
-    background: linear-gradient(90deg, rgba(0,0,0,0.12) 0%, transparent 100%);
+    background: linear-gradient(90deg, rgba(0,0,0,0.15) 0%, transparent 100%);
     z-index: 4;
     pointer-events: none;
   }
 
-  /* Controls */
-  .controls {
+  /* ── Content Layers ── */
+  .content {
+    position: absolute;
+    inset: 0;
+    z-index: 3;
     display: flex;
-    gap: 12px;
-    flex-wrap: wrap;
+    flex-direction: column;
+    align-items: center;
     justify-content: center;
-    margin-bottom: 24px;
+    padding: 8% 10% 14%;
+    text-align: center;
   }
 
-  .controls button {
-    padding: 10px 24px;
-    border: 1px solid rgba(255,255,255,0.15);
-    background: rgba(255,255,255,0.06);
-    color: #ccc;
-    border-radius: 8px;
-    cursor: pointer;
+  /* Direction-specific content styling */
+  .dir-content { display: none; flex-direction: column; align-items: center; width: 100%; }
+  .dir-content.active { display: flex; }
+
+  /* AI Title Art overlay */
+  .title-art-overlay {
+    width: 85%;
+    margin-bottom: 4%;
+    opacity: 0;
+    transition: opacity 0.6s ease;
+    position: relative;
+  }
+  .title-art-overlay.show { opacity: 1; }
+  .title-art-overlay img {
+    width: 100%;
+    height: auto;
+    display: block;
+    border-radius: 2px;
+  }
+
+  /* CSS Title */
+  .css-title {
+    font-family: 'Playfair Display', serif;
+    font-weight: 900;
+    color: #fff;
+    text-shadow: 0 2px 20px rgba(0,0,0,0.4);
+    line-height: 1.05;
+    margin-bottom: 3%;
+    letter-spacing: 0.02em;
+    display: none;
+  }
+  .css-title.show { display: block; }
+
+  /* Divider */
+  .divider {
+    width: 40px;
+    height: 2px;
+    margin: 2% auto;
+    opacity: 0.7;
+  }
+
+  /* Subtitle */
+  .subtitle-text {
+    font-family: 'Cormorant Garamond', serif;
+    font-weight: 400;
+    font-style: italic;
+    color: rgba(255,255,255,0.92);
+    text-shadow: 0 1px 12px rgba(0,0,0,0.3);
+    line-height: 1.45;
+    margin-bottom: 1%;
+  }
+
+  /* Author */
+  .author-text {
+    font-weight: 300;
+    letter-spacing: 0.15em;
+    text-transform: uppercase;
+    color: rgba(255,255,255,0.8);
+    text-shadow: 0 1px 8px rgba(0,0,0,0.3);
+    margin-top: 2%;
+  }
+
+  /* Tagline */
+  .tagline-text {
+    font-size: clamp(8px, 1vw, 11px);
+    font-weight: 400;
+    letter-spacing: 0.4em;
+    text-transform: uppercase;
+    color: rgba(255,215,150,0.7);
+    text-shadow: 0 1px 6px rgba(0,0,0,0.4);
+    margin-top: 3%;
+  }
+
+  /* ── Direction 1: Minimal Gold ── */
+  .dir1 .css-title {
+    font-family: 'Playfair Display', serif;
+    font-size: clamp(32px, 6vw, 60px);
+    color: #fff;
+    text-shadow: 0 2px 30px rgba(0,0,0,0.4), 0 0 60px rgba(255,215,0,0.1);
+  }
+  .dir1 .divider {
+    background: linear-gradient(90deg, transparent, #ffd700, transparent);
+  }
+  .dir1 .subtitle-text {
+    font-size: clamp(11px, 1.8vw, 18px);
+    font-weight: 300;
+  }
+  .dir1 .author-text {
+    font-size: clamp(10px, 1.4vw, 14px);
     font-family: 'Inter', sans-serif;
-    font-size: 13px;
-    transition: all 0.25s ease;
-    backdrop-filter: blur(4px);
+    font-weight: 300;
+  }
+  .dir1 .tagline-text {
+    font-family: 'Inter', sans-serif;
   }
 
-  .controls button:hover {
-    background: rgba(255,255,255,0.12);
+  /* ── Direction 2: Organic Brush ── */
+  .dir2 .css-title {
+    font-family: 'Playfair Display', serif;
+    font-size: clamp(30px, 5.5vw, 55px);
+    font-weight: 700;
+    font-style: italic;
+    color: #fff4e8;
+    text-shadow: 0 3px 25px rgba(0,0,0,0.5), 2px 2px 0 rgba(180,80,40,0.15);
+    letter-spacing: 0.04em;
+  }
+  .dir2 .divider {
+    background: linear-gradient(90deg, transparent, rgba(255,255,240,0.6), transparent);
+    width: 60px;
+  }
+  .dir2 .subtitle-text {
+    font-size: clamp(12px, 1.9vw, 19px);
+    font-weight: 400;
+    color: rgba(255,244,232,0.95);
+  }
+  .dir2 .author-text {
+    font-size: clamp(10px, 1.3vw, 13px);
+    font-family: 'Cormorant Garamond', serif;
+    font-weight: 400;
+    letter-spacing: 0.2em;
+    color: rgba(255,244,232,0.8);
+  }
+  .dir2 .tagline-text {
+    font-family: 'Inter', sans-serif;
+    letter-spacing: 0.5em;
+    color: rgba(255,215,150,0.6);
+  }
+
+  /* ── Direction 3: Blueprint ── */
+  .dir3 .css-title {
+    font-family: 'Cinzel', serif;
+    font-size: clamp(26px, 4.8vw, 48px);
+    font-weight: 600;
     color: #fff;
-    border-color: rgba(255,255,255,0.3);
+    text-shadow: 0 2px 25px rgba(0,0,0,0.5), 0 0 40px rgba(255,200,100,0.08);
+    letter-spacing: 0.12em;
+  }
+  .dir3 .divider {
+    background: linear-gradient(90deg, transparent, rgba(255,215,0,0.5), transparent);
+    width: 55px;
+  }
+  .dir3 .subtitle-text {
+    font-size: clamp(11px, 1.6vw, 16px);
+    font-weight: 300;
+    letter-spacing: 0.02em;
+  }
+  .dir3 .author-text {
+    font-size: clamp(9px, 1.2vw, 12px);
+    font-family: 'Cinzel', serif;
+    font-weight: 400;
+    letter-spacing: 0.18em;
+  }
+  .dir3 .tagline-text {
+    font-family: 'Inter', sans-serif;
+    font-weight: 300;
   }
 
-  .controls button.active {
-    background: linear-gradient(135deg, #c0392b, #e74c3c);
+  /* ── Direction 4: Gold Foil ── */
+  .dir4 .css-title {
+    font-family: 'Bodoni Moda', serif;
+    font-size: clamp(28px, 5.2vw, 52px);
+    font-weight: 700;
     color: #fff;
-    border-color: #c0392b;
+    text-shadow:
+      0 2px 20px rgba(0,0,0,0.5),
+      0 0 30px rgba(255,215,0,0.15),
+      0 0 60px rgba(255,215,0,0.05);
+    letter-spacing: 0.03em;
+    font-style: italic;
+  }
+  .dir4 .divider {
+    background: linear-gradient(90deg, transparent, #ffd700, transparent);
+    width: 45px;
+    box-shadow: 0 0 8px rgba(255,215,0,0.2);
+  }
+  .dir4 .subtitle-text {
+    font-size: clamp(11px, 1.7vw, 17px);
+    font-weight: 400;
+    color: rgba(255,255,255,0.95);
+  }
+  .dir4 .author-text {
+    font-size: clamp(10px, 1.3vw, 13px);
+    font-family: 'Bodoni Moda', serif;
+    font-weight: 400;
+    letter-spacing: 0.22em;
+    color: rgba(255,215,0,0.7);
+  }
+  .dir4 .tagline-text {
+    font-family: 'Inter', sans-serif;
+    color: rgba(255,215,0,0.5);
+    letter-spacing: 0.45em;
   }
 
+  /* ── Info ── */
   .info {
     text-align: center;
-    color: #666;
-    font-family: 'Inter', sans-serif;
-    font-size: 12px;
+    color: #555;
+    font-size: 11px;
     line-height: 1.8;
+    font-weight: 300;
+    letter-spacing: 0.03em;
   }
-
-  .info a { color: #e74c3c; text-decoration: none; }
+  .info strong { color: #888; font-weight: 400; }
+  .info a { color: #ff6b35; text-decoration: none; }
   .info a:hover { text-decoration: underline; }
 
-  /* Responsive */
-  @media (max-width: 600px) {
-    .book-frame { max-width: 360px; }
-    .subtitle { font-size: clamp(11px, 3.5vw, 16px); }
-    .author { font-size: clamp(10px, 2.8vw, 14px); }
-    .tagline { font-size: clamp(7px, 1.8vw, 10px); }
+  /* ── Responsive ── */
+  @media (max-width: 500px) {
+    body { padding: 16px 10px; }
+    .header { margin-bottom: 20px; }
+    .dir-pills { gap: 6px; }
+    .dir-pill { padding: 6px 12px; font-size: 10px; }
+    .book-wrapper::before {
+      font-size: 7px;
+      letter-spacing: 0.2em;
+      padding: 3px 12px;
+      top: -11px;
+    }
   }
 </style>
 </head>
 <body>
 
-  <!-- Background selector -->
-  <div class="controls">
-    <button class="active" onclick="switchBg(1)">🌅 Background A</button>
-    <button onclick="switchBg(2)">🌄 Background B</button>
-    <button onclick="switchTitle(1)">🖌️ Title Style 1</button>
-    <button onclick="switchTitle(2)">✒️ Title Style 2</button>
-  </div>
+<div class="header">
+  <h1>Innovation SWAT</h1>
+  <div class="sub">Award-Winning Book Cover · Four Design Directions</div>
+  <div class="badge">🏆 GOLD AWARD · CREATIVE EXCELLENCE · CRAFT MASTERY</div>
+</div>
 
-  <!-- Book cover mockup -->
-  <div class="book-frame" id="bookCover">
-    <!-- Background image -->
-    <div class="cover-bg" id="bg1" style="background-image:url('gen_777_1.jpg')"></div>
-    <div class="cover-bg v2" id="bg2" style="background-image:url('gen_777_2.jpg')"></div>
+<!-- Direction selectors -->
+<div class="dir-pills">
+  <div class="dir-pill active" data-dir="1" onclick="switchDir(1)">✦ Minimal Gold</div>
+  <div class="dir-pill" data-dir="2" onclick="switchDir(2)">✦ Organic Brush</div>
+  <div class="dir-pill" data-dir="3" onclick="switchDir(3)">✦ Blueprint</div>
+  <div class="dir-pill" data-dir="4" onclick="switchDir(4)">✦ Gold Foil</div>
+</div>
 
-    <!-- Overlay for text readability -->
-    <div class="cover-overlay"></div>
+<!-- Title style toggle -->
+<div class="title-toggle">
+  <button class="active" data-title="css" onclick="switchTitle('css')">Typography Title</button>
+  <button data-title="ai-brush" onclick="switchTitle('ai-brush')">AI Brush Calligraphy</button>
+  <button data-title="ai-serif" onclick="switchTitle('ai-serif')">AI Serif Gold</button>
+</div>
 
-    <!-- AI Hand-lettered title art -->
-    <div class="title-art" id="titleArt1">
-      <img src="gen_888_1.jpg" alt="INNOVATION SWAT hand-lettered">
+<!-- Book mockup -->
+<div class="book-wrapper">
+  <div class="book-frame" id="bookFrame">
+
+    <!-- Background layers -->
+    <div class="bg-layer active" id="bg1" style="background-image:url('gen_101_1.jpg')"></div>
+    <div class="bg-layer" id="bg2" style="background-image:url('gen_202_1.jpg')"></div>
+    <div class="bg-layer" id="bg3" style="background-image:url('gen_303_1.jpg')"></div>
+    <div class="bg-layer" id="bg4" style="background-image:url('gen_404_1.jpg')"></div>
+
+    <div class="overlay"></div>
+    <div class="spine"></div>
+
+    <div class="content">
+
+      <!-- Direction 1: Minimal Gold -->
+      <div class="dir-content dir1 active" data-dir="1">
+        <div class="css-title show">INNOVATION<br>SWAT</div>
+        <div class="title-art-overlay" id="ta1-brush"><img src="gen_505_1.jpg" alt="Brush calligraphy"></div>
+        <div class="title-art-overlay" id="ta1-serif"><img src="gen_606_1.jpg" alt="Serif gold"></div>
+        <div class="divider"></div>
+        <div class="subtitle-text">The Superpower to Build Any Business<br>and Product in the Age of AI</div>
+        <div class="author-text">Written by Justin Tsui</div>
+        <div class="tagline-text">✦ Frameworks for the New World ✦</div>
+      </div>
+
+      <!-- Direction 2: Organic Brush -->
+      <div class="dir-content dir2" data-dir="2">
+        <div class="css-title show">INNOVATION<br>SWAT</div>
+        <div class="title-art-overlay" id="ta2-brush"><img src="gen_505_1.jpg" alt="Brush calligraphy"></div>
+        <div class="title-art-overlay" id="ta2-serif"><img src="gen_606_1.jpg" alt="Serif gold"></div>
+        <div class="divider"></div>
+        <div class="subtitle-text">The Superpower to Build Any Business<br>and Product in the Age of AI</div>
+        <div class="author-text">Written by Justin Tsui</div>
+        <div class="tagline-text">✦ Frameworks for the New World ✦</div>
+      </div>
+
+      <!-- Direction 3: Blueprint -->
+      <div class="dir-content dir3" data-dir="3">
+        <div class="css-title show">INNOVATION<br>SWAT</div>
+        <div class="title-art-overlay" id="ta3-brush"><img src="gen_505_1.jpg" alt="Brush calligraphy"></div>
+        <div class="title-art-overlay" id="ta3-serif"><img src="gen_606_1.jpg" alt="Serif gold"></div>
+        <div class="divider"></div>
+        <div class="subtitle-text">The Superpower to Build Any Business<br>and Product in the Age of AI</div>
+        <div class="author-text">Written by Justin Tsui</div>
+        <div class="tagline-text">✦ Frameworks for the New World ✦</div>
+      </div>
+
+      <!-- Direction 4: Gold Foil -->
+      <div class="dir-content dir4" data-dir="4">
+        <div class="css-title show">INNOVATION<br>SWAT</div>
+        <div class="title-art-overlay" id="ta4-brush"><img src="gen_505_1.jpg" alt="Brush calligraphy"></div>
+        <div class="title-art-overlay" id="ta4-serif"><img src="gen_606_1.jpg" alt="Serif gold"></div>
+        <div class="divider"></div>
+        <div class="subtitle-text">The Superpower to Build Any Business<br>and Product in the Age of AI</div>
+        <div class="author-text">Written by Justin Tsui</div>
+        <div class="tagline-text">✦ Frameworks for the New World ✦</div>
+      </div>
+
     </div>
-    <div class="title-art" id="titleArt2" style="opacity:0;">
-      <img src="gen_888_2.jpg" alt="INNOVATION SWAT hand-lettered variant">
-    </div>
-
-    <!-- CSS text overlay -->
-    <div class="cover-text subtitle">
-      The Superpower to Build Any Business<br>
-      and Product in the Age of AI
-    </div>
-
-    <div class="cover-text author">Written by Justin Tsui</div>
-    <div class="cover-text tagline">✦ Frameworks for the New World ✦</div>
-
-    <!-- Spine shadow -->
-    <div class="spine-shadow"></div>
   </div>
+</div>
 
-  <div class="info">
-    📖 <strong>6" × 9"</strong> book cover format &nbsp;•&nbsp;
-    AI background via <a href="https://fal.ai" target="_blank">fal.ai</a> FLUX Pro Kontext
-    &nbsp;•&nbsp; Title composited + CSS typography
-  </div>
+<div class="info">
+  <strong>6" × 9"</strong> book cover format &nbsp;·&nbsp;
+  AI artwork via <a href="https://fal.ai" target="_blank">fal.ai</a> FLUX Pro Kontext &nbsp;·&nbsp;
+  Typography · CSS composited &nbsp;·&nbsp;
+  Seeds: <strong>101</strong> · <strong>202</strong> · <strong>303</strong> · <strong>404</strong>
+</div>
 
-  <script>
-    function switchBg(n) {
-      document.getElementById('bg1').style.opacity = n === 1 ? '1' : '0';
-      document.getElementById('bg2').style.opacity = n === 2 ? '1' : '0';
-      document.querySelectorAll('.controls button').forEach((b,i) => {
-        b.classList.toggle('active', (i < 2 && i === n-1) || (i >= 2));
-      });
+<script>
+  let currentDir = 1;
+  let currentTitle = 'css';
+
+  function switchDir(n) {
+    currentDir = n;
+    // Backgrounds
+    document.querySelectorAll('.bg-layer').forEach(el => el.classList.remove('active'));
+    document.getElementById('bg' + n).classList.add('active');
+    // Direction content
+    document.querySelectorAll('.dir-content').forEach(el => el.classList.remove('active'));
+    document.querySelector('.dir-content[data-dir="' + n + '"]').classList.add('active');
+    // Pills
+    document.querySelectorAll('.dir-pill').forEach(el => el.classList.remove('active'));
+    document.querySelector('.dir-pill[data-dir="' + n + '"]').classList.add('active');
+    // Re-apply title
+    applyTitle();
+  }
+
+  function switchTitle(type) {
+    currentTitle = type;
+    document.querySelectorAll('.title-toggle button').forEach(b => b.classList.remove('active'));
+    document.querySelector('.title-toggle button[data-title="' + type + '"]').classList.add('active');
+    applyTitle();
+  }
+
+  function applyTitle() {
+    // For each direction
+    for (let d = 1; d <= 4; d++) {
+      const content = document.querySelector('.dir-content[data-dir="' + d + '"]');
+      if (!content) continue;
+      const cssTitle = content.querySelector('.css-title');
+      const brushArt = content.querySelector('#ta' + d + '-brush');
+      const serifArt = content.querySelector('#ta' + d + '-serif');
+
+      // Hide all
+      cssTitle.classList.remove('show');
+      if (brushArt) brushArt.classList.remove('show');
+      if (serifArt) serifArt.classList.remove('show');
+
+      // Show selected
+      if (currentTitle === 'css') {
+        cssTitle.classList.add('show');
+      } else if (currentTitle === 'ai-brush') {
+        if (brushArt) brushArt.classList.add('show');
+      } else if (currentTitle === 'ai-serif') {
+        if (serifArt) serifArt.classList.add('show');
+      }
     }
-
-    function switchTitle(n) {
-      document.getElementById('titleArt1').style.opacity = n === 1 ? '0.9' : '0';
-      document.getElementById('titleArt2').style.opacity = n === 2 ? '0.9' : '0';
-      document.querySelectorAll('.controls button').forEach((b,i) => {
-        b.classList.toggle('active', (i >= 2 && i-2 === n-1) || (i < 2));
-      });
-    }
-  </script>
+  }
+</script>
 
 </body>
 </html>
